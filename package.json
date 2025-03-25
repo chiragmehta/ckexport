@@ -1,0 +1,32 @@
+{
+  "name": "ckexport",
+  "version": "1.0.0",
+  "description": "Export CreditKarma transactions to CSV/JSON using TypeScript",
+  "author": "Chirag Mehta",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chiragmehta/ckexport"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.13",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  },
+  "type": "module",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
