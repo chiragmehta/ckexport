@@ -1,8 +1,8 @@
 import fs from 'fs/promises';
-import { Transaction } from './types.js';
-import { debug } from './utils.js';
-import { CONFIG } from './config.js';
-import { getTransactions } from './api.js';
+import { debug } from './utils.ts';
+import { CONFIG } from './config.ts';
+import { getTransactions } from './api.ts';
+import type { Transaction } from './types.ts';
 
 async function initializeFiles(): Promise<{ csvFile: fs.FileHandle; jsonFile: fs.FileHandle }> {
   // Delete existing file before first write

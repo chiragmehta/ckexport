@@ -4,7 +4,7 @@ A TypeScript port of [Matt Robinson's Ruby script](https://github.com/mmrobins/c
 
 ## Prerequisites
 
-- Node.js 18 or higher
+- Node.js 24 or higher
 - pnpm (recommended) or npm
 
 ## Installation
@@ -33,14 +33,16 @@ cp sample.env .env
 ## Usage
 
 ```bash
-# Run with TypeScript (development)
+# Run with TypeScript (needs Node 24+)
 pnpm dev
 
-# Or build and run with Node.js
+# Or build and run with older Node.js
 pnpm build
 pnpm start
 
 # Optional: Specify date range (YYYY-MM-DD format)
+pnpm dev "2023-01-01" "2024-01-01"
+# OR
 pnpm start "2023-01-01" "2024-01-01"
 ```
 

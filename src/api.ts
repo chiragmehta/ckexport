@@ -1,8 +1,8 @@
 import fetch from 'node-fetch';
-import { Transaction, TransactionResponse } from './types.js';
-import { debug, handleMissingResponseData, HELP_MESSAGE } from './utils.js';
-import { CONFIG } from './config.js';
-import { GET_TRANSACTIONS_QUERY } from './queries.js';
+import { debug, handleMissingResponseData, HELP_MESSAGE } from './utils.ts';
+import { CONFIG } from './config.ts';
+import { GET_TRANSACTIONS_QUERY } from './queries.ts';
+import type { Transaction, TransactionResponse } from './types.ts';
 
 interface ProcessedTransactionData {
   transactions: Transaction[];

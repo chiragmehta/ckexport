@@ -8,20 +8,20 @@
     "type": "git",
     "url": "https://github.com/chiragmehta/ckexport"
   },
-  "main": "dist/index.js",
+  "main": "src/index.ts",
+  "packageManager": "pnpm@10.14.0",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "tsx src/index.ts"
+    "dev": "node src/index.ts"
   },
   "dependencies": {
-    "dotenv": "^16.4.7",
+    "dotenv": "^17.2.1",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "@types/node": "^22.13.13",
-    "tsx": "^4.19.3",
-    "typescript": "^5.8.2"
+    "@types/node": "^24.2.0",
+    "typescript": "^5.9.2"
   },
   "type": "module",
   "pnpm": {
