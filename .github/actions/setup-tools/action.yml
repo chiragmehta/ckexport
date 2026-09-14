@@ -22,5 +22,5 @@ runs:
       run: |
         mkdir -p "$RUNNER_TEMP/bin"
         GOBIN="$RUNNER_TEMP/bin" go install "github.com/rhysd/actionlint/cmd/actionlint@${ACTIONLINT_VERSION}"
-        GOBIN="$RUNNER_TEMP/bin" go install "github.com/gitleaks/gitleaks/v8@${GITLEAKS_VERSION}"
+        GOBIN="$RUNNER_TEMP/bin" go install "github.com/zricethezav/gitleaks/v8@${GITLEAKS_VERSION}"
         echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
