@@ -1,0 +1,4 @@
+peerDependencyRules:
+  allowedVersions:
+    "madge@8>typescript": ">=6 <7"
+strictPeerDependencies: true

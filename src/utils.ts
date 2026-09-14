@@ -3,7 +3,7 @@ export const HELP_MESSAGE = `
 
     MY_ACCESS_TOKEN=your_new_access_token_here
 
-  If the token expires, you can restart where you left off by setting the START_CURSOR env var to the last attempted value
+  If the token expires, you can restart where you left off by setting START_CURSOR to a cursor from reviewed private debug output. Do not share cursor values.
 
   See the README for more details:
     https://github.com/chiragmehta/ckexport
@@ -12,14 +12,32 @@ export const HELP_MESSAGE = `
     https://github.com/mmrobins/creditkarma_export_transactions?tab=readme-ov-file#access-token
   `;
 
-export async function debug(msg: unknown): Promise<void> {
-  if (process.env.DEBUG) {
+export function debug(msg: unknown): void {
+  const debugEnabled =
+    process.env.DEBUG === "1" || process.env.DEBUG?.toLowerCase() === "true";
+  if (debugEnabled) {
     console.log(JSON.stringify(msg, null, 2));
   }
 }
 
+export function parseDateRangeArgs(
+  args: readonly string[],
+): readonly [string | undefined, string | undefined] {
+  const dateArgs = args[0] === "--" ? args.slice(1) : args;
+  return [dateArgs[0], dateArgs[1]];
+}
+
+export function toCsvField(value: string): string {
+  return `"${value.replaceAll('"', '""')}"`;
+}
+
 export function handleMissingResponseData(resp: unknown): void {
-  console.log("expected data not in response: \n\n", resp);
-  console.log("\nIf your response looks like \n\n{\"data\"=>{\"prime\"=>{\"transactionsHub\"=>{}}}}\n");
-  console.log("then you probably need to re-authenticate on the website visiting https://www.creditkarma.com/networth/transaction");
+  void resp;
+  console.log("Expected transaction data was not in the API response.");
+  console.log(
+    "\nIf the response has an empty transactionsHub object, re-authentication is probably required.\n",
+  );
+  console.log(
+    "then you probably need to re-authenticate on the website visiting https://www.creditkarma.com/networth/transaction",
+  );
 }

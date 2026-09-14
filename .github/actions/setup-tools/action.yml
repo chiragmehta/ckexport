@@ -1,0 +1,26 @@
+name: Set up repository tools
+description: Install pinned pnpm and native validation tools.
+
+runs:
+  using: composite
+  steps:
+    - name: Enable pnpm
+      shell: bash
+      run: |
+        corepack enable
+        corepack install --global pnpm@11.24.0
+    - name: Set up Go
+      uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7
+      with:
+        cache: false
+        go-version: "1.27.0"
+    - name: Install native validation tools
+      shell: bash
+      env:
+        ACTIONLINT_VERSION: v1.7.12
+        GITLEAKS_VERSION: v8.30.1
+      run: |
+        mkdir -p "$RUNNER_TEMP/bin"
+        GOBIN="$RUNNER_TEMP/bin" go install "github.com/rhysd/actionlint/cmd/actionlint@${ACTIONLINT_VERSION}"
+        GOBIN="$RUNNER_TEMP/bin" go install "github.com/gitleaks/gitleaks/v8@${GITLEAKS_VERSION}"
+        echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"

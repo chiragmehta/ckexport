@@ -1,32 +1,70 @@
 {
   "name": "ckexport",
   "version": "1.0.0",
-  "description": "Export CreditKarma transactions to CSV/JSON using TypeScript",
-  "author": "Chirag Mehta",
+  "private": true,
+  "description": "Export Credit Karma transaction history to CSV and JSON from the command line.",
+  "keywords": [
+    "credit-karma",
+    "csv",
+    "export",
+    "finance",
+    "transactions"
+  ],
+  "homepage": "https://github.com/chiragmehta/ckexport#readme",
+  "bugs": {
+    "url": "https://github.com/chiragmehta/ckexport/issues"
+  },
+  "author": {
+    "name": "Chirag Mehta",
+    "url": "https://chir.ag"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chiragmehta/ckexport"
+    "url": "git+https://github.com/chiragmehta/ckexport.git"
   },
-  "main": "src/index.ts",
-  "packageManager": "pnpm@10.28.2",
+  "type": "module",
+  "engines": {
+    "node": ">=24",
+    "pnpm": ">=11"
+  },
   "scripts": {
-    "build": "tsc",
+    "analyze": "pnpm run analyze:unused && pnpm run analyze:cycles",
+    "analyze:cycles": "madge --extensions ts --circular --no-spinner src",
+    "analyze:unused": "knip",
+    "build": "tsc -p tsconfig.json",
+    "dev": "node src/index.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "pnpm run lint:code && pnpm run lint:workflows",
+    "lint:code": "eslint src test eslint.config.js --max-warnings 0",
+    "lint:fix": "eslint src test eslint.config.js --fix",
+    "lint:workflows": "actionlint",
+    "quality": "pnpm peers check",
+    "secrets:check": "gitleaks git --redact -v",
     "start": "node dist/index.js",
-    "dev": "node src/index.ts"
+    "test": "pnpm run test:unit && pnpm run build",
+    "test:coverage": "node --test --experimental-test-coverage test/utils.test.mjs",
+    "test:unit": "node --test test/utils.test.mjs",
+    "typecheck": "pnpm run typecheck:ts7 && pnpm run typecheck:ts6",
+    "typecheck:ts6": "tsc6 -p tsconfig.json --noEmit",
+    "typecheck:ts7": "tsc -p tsconfig.json --noEmit",
+    "validate": "pnpm run secrets:check && pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run analyze && pnpm run quality"
   },
   "dependencies": {
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.4.2",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "@types/node": "^25.1.0",
-    "typescript": "^5.9.3"
-  },
-  "type": "module",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.5.1",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "eslint": "^10.10.0",
+    "globals": "^17.12.0",
+    "knip": "^6.35.1",
+    "madge": "^8.0.0",
+    "prettier": "^3.9.6",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript-eslint": "^8.70.0"
   }
 }
