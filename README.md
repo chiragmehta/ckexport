@@ -109,7 +109,7 @@ Use [CONTRIBUTING.md](CONTRIBUTING.md) for contribution and security rules.
 | ------------------------ | ------------------------------------------------------------ |
 | `pnpm run dev`           | Run the TypeScript source directly.                          |
 | `pnpm run build`         | Build the command into `dist/`.                              |
-| `pnpm run format`        | Write Prettier formatting.                                   |
+| `pnpm run format`        | Write Oxfmt formatting.                                      |
 | `pnpm run format:check`  | Check formatting without changes.                            |
 | `pnpm run lint`          | Check JavaScript, TypeScript, and GitHub Actions.            |
 | `pnpm run typecheck`     | Check source with TypeScript 7 and TypeScript 6.             |

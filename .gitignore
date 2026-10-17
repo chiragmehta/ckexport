@@ -37,5 +37,4 @@ coverage/
 
 # Cache directories
 .npm
-.eslintcache
 .cache

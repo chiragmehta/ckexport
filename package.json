@@ -14,31 +14,27 @@
   "bugs": {
     "url": "https://github.com/chiragmehta/ckexport/issues"
   },
+  "license": "MIT",
   "author": {
     "name": "Chirag Mehta",
     "url": "https://chir.ag"
   },
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chiragmehta/ckexport.git"
   },
   "type": "module",
-  "engines": {
-    "node": ">=24",
-    "pnpm": ">=11"
-  },
   "scripts": {
     "analyze": "pnpm run analyze:unused && pnpm run analyze:cycles",
     "analyze:cycles": "madge --extensions ts --circular --no-spinner src",
     "analyze:unused": "knip",
     "build": "tsc -p tsconfig.json",
     "dev": "node src/index.ts",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "lint": "pnpm run lint:code && pnpm run lint:workflows",
-    "lint:code": "eslint src test eslint.config.js --max-warnings 0",
-    "lint:fix": "eslint src test eslint.config.js --fix",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "lint": "pnpm run lint:js && pnpm run lint:workflows",
+    "lint:js": "oxlint src test --deny-warnings",
+    "lint:fix": "oxlint src test --fix --deny-warnings",
     "lint:workflows": "actionlint",
     "quality": "pnpm peers check",
     "secrets:check": "gitleaks git --redact -v",
@@ -52,19 +48,20 @@
     "validate": "pnpm run secrets:check && pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run analyze && pnpm run quality"
   },
   "dependencies": {
-    "dotenv": "^17.4.2",
+    "dotenv": "^18.0.8",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/node": "^26.5.1",
+    "@types/node": "^26.6.5",
     "@typescript/native": "npm:typescript@^7.0.2",
-    "eslint": "^10.10.0",
-    "globals": "^17.12.0",
-    "knip": "^6.35.1",
+    "knip": "^6.41.0",
     "madge": "^8.0.0",
-    "prettier": "^3.9.6",
-    "typescript": "npm:@typescript/typescript6@^6.0.2",
-    "typescript-eslint": "^8.70.0"
+    "oxfmt": "^0.73.0",
+    "oxlint": "^1.88.0",
+    "typescript": "npm:@typescript/typescript6@^6.0.2"
+  },
+  "engines": {
+    "node": ">=24",
+    "pnpm": ">=11"
   }
 }

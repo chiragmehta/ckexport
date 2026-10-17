@@ -13,8 +13,7 @@ export const HELP_MESSAGE = `
   `;
 
 export function debug(msg: unknown): void {
-  const debugEnabled =
-    process.env.DEBUG === "1" || process.env.DEBUG?.toLowerCase() === "true";
+  const debugEnabled = process.env.DEBUG === "1" || process.env.DEBUG?.toLowerCase() === "true";
   if (debugEnabled) {
     console.log(JSON.stringify(msg, null, 2));
   }

@@ -8,10 +8,7 @@ test("parseDateRangeArgs accepts pnpm's argument separator", () => {
     "2026-01-01",
     "2026-08-31",
   ]);
-  assert.deepEqual(parseDateRangeArgs(["2026-01-01", "2026-08-31"]), [
-    "2026-01-01",
-    "2026-08-31",
-  ]);
+  assert.deepEqual(parseDateRangeArgs(["2026-01-01", "2026-08-31"]), ["2026-01-01", "2026-08-31"]);
 });
 
 test("toCsvField quotes fields and doubles embedded quotes", () => {

@@ -28,9 +28,7 @@ export async function getTransactions(
   if (
     [...accessToken].some((char) => {
       const code = char.codePointAt(0);
-      return (
-        code !== undefined && (code < 0x20 || code === 0x7f || code > 0xff)
-      );
+      return code !== undefined && (code < 0x20 || code === 0x7f || code > 0xff);
     })
   ) {
     throw new Error(
@@ -78,13 +76,9 @@ export async function getTransactions(
       console.log(HELP_MESSAGE);
       console.log();
       console.log("401: MY_ACCESS_TOKEN was invalid or has expired.");
-      console.log(
-        "Get a new Authorization header value from Credit Karma and try again.",
-      );
+      console.log("Get a new Authorization header value from Credit Karma and try again.");
     }
-    throw new Error(
-      `Credit Karma API request failed with HTTP ${response.status}`,
-    );
+    throw new Error(`Credit Karma API request failed with HTTP ${response.status}`);
   }
 
   const resp = (await response.json()) as TransactionResponse;
@@ -99,8 +93,7 @@ export async function getTransactions(
     throw new Error("GraphQL API returned errors");
   }
 
-  const respData =
-    resp?.data?.prime?.transactionsHub?.transactionPage?.transactions;
+  const respData = resp?.data?.prime?.transactionsHub?.transactionPage?.transactions;
   if (!respData) {
     handleMissingResponseData(resp);
     throw new Error("Invalid response data structure");

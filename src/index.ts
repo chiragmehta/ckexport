@@ -60,17 +60,7 @@ async function main(startDate?: string, endDate?: string) {
         }
 
         const csvLine =
-          [
-            tra.date,
-            tra.merch,
-            tra.desc,
-            tra.amt,
-            tra.tra_type,
-            tra.cat,
-            tra.acct,
-            "",
-            "",
-          ]
+          [tra.date, tra.merch, tra.desc, tra.amt, tra.tra_type, tra.cat, tra.acct, "", ""]
             .map(toCsvField)
             .join(",") + "\n";
         await csvFile.write(csvLine);
