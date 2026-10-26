@@ -48,7 +48,7 @@
     "validate": "pnpm run secrets:check && pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run analyze && pnpm run quality"
   },
   "dependencies": {
-    "dotenv": "^18.0.8",
+    "dotenv": "^18.0.9",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
