@@ -56,7 +56,7 @@
     "@typescript/native": "npm:typescript@^7.0.2",
     "knip": "^6.41.0",
     "madge": "^8.0.0",
-    "oxfmt": "^0.73.0",
+    "oxfmt": "^0.74.0",
     "oxlint": "^1.88.0",
     "typescript": "npm:@typescript/typescript6@^6.0.2"
   },
