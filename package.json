@@ -57,7 +57,7 @@
     "knip": "^6.41.0",
     "madge": "^8.0.0",
     "oxfmt": "^0.73.0",
-    "oxlint": "^1.88.0",
+    "oxlint": "^1.89.0",
     "typescript": "npm:@typescript/typescript6@^6.0.2"
   },
   "engines": {
